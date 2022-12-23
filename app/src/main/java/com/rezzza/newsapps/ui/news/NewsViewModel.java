@@ -11,7 +11,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.rezzza.newsapps.data.api.ErrorCode;
 import com.rezzza.newsapps.data.api.model.NewsResponseModel;
-import com.rezzza.newsapps.data.api.model.SourceResponseModel;
 import com.rezzza.newsapps.data.api.repository.NewsRepository;
 
 public class NewsViewModel extends AndroidViewModel {
@@ -29,7 +28,7 @@ public class NewsViewModel extends AndroidViewModel {
     }
 
     public void getNews(String sourceId, int page){
-        if (!isNetworkConnected()){
+        if (isNetworkConnected()){
             MutableLiveData<NewsResponseModel> data = new MutableLiveData<>();
             data.postValue(initErrorInternet());
             liveData = data;
@@ -39,7 +38,7 @@ public class NewsViewModel extends AndroidViewModel {
 
     }
     public void findNews(String sourceId, int page, String find){
-        if (!isNetworkConnected()){
+        if (isNetworkConnected()){
             MutableLiveData<NewsResponseModel> data = new MutableLiveData<>();
             data.postValue(initErrorInternet());
             liveData = data;
@@ -49,7 +48,7 @@ public class NewsViewModel extends AndroidViewModel {
 
     }
     public void findAllNews(int page, String find){
-        if (!isNetworkConnected()){
+        if (isNetworkConnected()){
             MutableLiveData<NewsResponseModel> data = new MutableLiveData<>();
             data.postValue(initErrorInternet());
             liveData = data;
@@ -71,7 +70,7 @@ public class NewsViewModel extends AndroidViewModel {
 
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) application.getSystemService(Context.CONNECTIVITY_SERVICE);
-        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+        return cm.getActiveNetworkInfo() == null || !cm.getActiveNetworkInfo().isConnected();
     }
 
 
