@@ -1,5 +1,6 @@
 package com.rezzza.newsapps.data.api.usecase;
 
+import com.rezzza.newsapps.data.api.model.NewsResponseModel;
 import com.rezzza.newsapps.data.api.model.SourceResponseModel;
 
 import retrofit2.Call;
@@ -10,5 +11,8 @@ public interface ApiInterface {
 
     @GET
     public Call<SourceResponseModel> getSource(@Url String url );
+
+    @GET
+    public Call<NewsResponseModel> getNews(@Url String url );
 
 }

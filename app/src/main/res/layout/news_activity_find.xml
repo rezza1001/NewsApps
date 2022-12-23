@@ -5,7 +5,7 @@
     android:background="@color/backgroundActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.source.FindActivity">
+    tools:context=".ui.news.FindActivity">
 
     <RelativeLayout
         android:id="@+id/rvly_header"
@@ -25,7 +25,7 @@
         </com.balysv.materialripple.MaterialRippleLayout>
 
         <TextView
-            android:text="@string/find_source"
+            android:text="@string/search_news"
             android:layout_toEndOf="@+id/mrly_back"
             android:fontFamily="@font/roboto"
             android:textStyle="bold"
@@ -72,13 +72,13 @@
 
                 <ImageView
                     android:id="@+id/imvw_clear"
-                    android:layout_marginEnd="5dp"
                     android:padding="10dp"
-                    android:src="@drawable/ic_baseline_clear_24"
+                    android:background="@color/primaryDark"
+                    android:src="@drawable/search"
                     android:layout_alignParentEnd="true"
-                    android:layout_width="40dp"
+                    android:layout_width="60dp"
                     android:layout_height="40dp"
-                    app:tint="#CC000000" />
+                    app:tint="@color/white" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
@@ -100,9 +100,28 @@
             android:textColor="@color/text3"
             android:layout_marginTop="50dp"
             android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:text="@string/find_source_from_sport"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shmr_load"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <include layout="@layout/include_shimmer_placeholder"/>
+                <include layout="@layout/include_shimmer_placeholder"/>
+                <include layout="@layout/include_shimmer_placeholder"/>
+                <include layout="@layout/include_shimmer_placeholder"/>
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
     </RelativeLayout>
 
 

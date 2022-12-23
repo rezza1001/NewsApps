@@ -43,9 +43,7 @@ public class CategoryActivity extends MyActivity {
 
     @Override
     protected void initListener() {
-        scvw_search.setOnActionListener(() -> {
-
-        });
+        scvw_search.setOnActionListener(() -> startActivity(new Intent(mActivity, FindAllActivity.class)));
 
         mAdapter.setOnSelectedListener(data -> {
             Intent intent = new Intent(mActivity, SourceActivity.class);

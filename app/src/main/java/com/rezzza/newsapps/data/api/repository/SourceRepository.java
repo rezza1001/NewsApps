@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.rezzza.newsapps.data.api.ApiConfig;
 import com.rezzza.newsapps.data.api.CallApiService;
+import com.rezzza.newsapps.data.api.ErrorCode;
 import com.rezzza.newsapps.data.api.model.SourceResponseModel;
 import com.rezzza.newsapps.data.api.usecase.ApiInterface;
 
@@ -32,19 +33,29 @@ public class SourceRepository {
             @Override
             public void onResponse(Call<SourceResponseModel> call, Response<SourceResponseModel> response) {
                 SourceResponseModel rep =  response.body();
+                ErrorCode code = ErrorCode.map(response.code());
+
                 if (response.code() == 200 &&  rep!=null){
+                    rep.setCode(code.getMessage());
                     data.postValue(rep);
                 }
                 else {
                     Log.e("HomeRepository","response "+response.code());
-                    data.postValue(null);
+
+                    rep = new SourceResponseModel();
+                    rep.setCode(code.getCode()+"");
+                    rep.setMessage(code.getMessage());
+                    data.postValue(rep);
                 }
             }
 
             @Override
             public void onFailure(Call<SourceResponseModel> call, Throwable t) {
                 Log.e("HomeRepository","onFailure");
-                data.postValue(null);
+                SourceResponseModel  rep = new SourceResponseModel();
+                rep.setCode("failure");
+                rep.setMessage("Unknown response message");
+                data.postValue(rep);
             }
         });
 

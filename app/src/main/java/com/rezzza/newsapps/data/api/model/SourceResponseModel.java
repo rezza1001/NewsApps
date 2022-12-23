@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class SourceResponseModel implements Serializable {
 
     private String status = "";
+    private String code = "";
+    private String message = "";
     private ArrayList<SourceDataModel> sources = new ArrayList<>();
 
     public String getStatus() {
@@ -22,5 +24,21 @@ public class SourceResponseModel implements Serializable {
 
     public void setSources(ArrayList<SourceDataModel> sources) {
         this.sources = sources;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

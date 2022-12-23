@@ -1,6 +1,7 @@
 package com.rezzza.newsapps.ui.source;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,6 +15,8 @@ import com.rezzza.newsapps.data.api.model.SourceDataModel;
 import com.rezzza.newsapps.entities.Category;
 import com.rezzza.newsapps.entities.Source;
 import com.rezzza.newsapps.ui.base.MyActivity;
+import com.rezzza.newsapps.ui.news.NewsActivity;
+import com.rezzza.newsapps.ui.view.ErrorDialog;
 import com.rezzza.newsapps.ui.view.SearchView;
 
 import java.util.ArrayList;
@@ -57,12 +60,12 @@ public class SourceActivity extends MyActivity {
     @Override
     protected void initListener() {
 
-
         scvw_search.setonSearchListener(this::filter);
 
-
         mAdapter.setOnSelectedListener(data -> {
-
+            Intent intent = new Intent(mActivity, NewsActivity.class);
+            intent.putExtra("data", data);
+            startActivity(intent);
         });
 
         findViewById(R.id.mrly_back).setOnClickListener(view -> onBackPressed());
@@ -82,6 +85,12 @@ public class SourceActivity extends MyActivity {
         sourceViewModel.getSource(mCategory.getName());
         sourceViewModel.getLiveData().observe(this, sourceResponseModel -> {
             if (sourceResponseModel == null){
+                hideLoading();
+                return;
+            }
+            if (!sourceResponseModel.getCode().equals("ok")){
+                showError(sourceResponseModel.getMessage());
+                hideLoading();
                 return;
             }
 
@@ -94,12 +103,8 @@ public class SourceActivity extends MyActivity {
                 listSource.add(source);
             }
 
-            if (shmr_load.getVisibility() == View.VISIBLE){
-                shmr_load.setVisibility(View.GONE);
-                shmr_load.stopShimmerAnimation();
-            }
             filter("");
-
+            hideLoading();
         });
     }
 
@@ -118,5 +123,17 @@ public class SourceActivity extends MyActivity {
         }
 
         mAdapter.notifyDataSetChanged();
+    }
+
+    private void hideLoading(){
+        if (shmr_load.getVisibility() == View.VISIBLE){
+            shmr_load.setVisibility(View.GONE);
+            shmr_load.stopShimmerAnimation();
+        }
+    }
+
+    private void showError(String message){
+        ErrorDialog dialog = new ErrorDialog(mActivity);
+        dialog.show("Failed API", message);
     }
 }
