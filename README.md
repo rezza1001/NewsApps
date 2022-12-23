@@ -2,4 +2,9 @@
 1. Source screen : Tidak bisa endless scrolling. karena API tidak support. hanyya ada filter by category dan country. reff : https://newsapi.org/docs/endpoints/sources
 2. API hanya bisa maksimal 50 request per hari
 
-![alt text](https://media.cnn.com/api/v1/images/stellar/prod/221222141259-holiday-travel-chicago-ohare-airport-1222.jpg?c=16x9&q=h_720,w_1280,c_fill)
+Splash Screen 
+![alt text](https://firebasestorage.googleapis.com/v0/b/vmafile.appspot.com/o/photo_2022-12-23_17-31-16.jpg?alt=media&token=f9206b24-1fed-4f34-a5f2-e869a55de58b)
+
+Home Screen Category
+![alt text](https://firebasestorage.googleapis.com/v0/b/vmafile.appspot.com/o/photo_2022-12-23_17-31-13.jpg?alt=media&token=4ae22adc-b6ef-4232-afbf-1683b3e5c83a)
+
