@@ -6,5 +6,8 @@
     <string name="search_source">Search Source</string>
     <string name="news_category">News Category</string>
     <string name="news_source">News Source</string>
+    <string name="find_source">Find Source</string>
     <string name="business">Business</string>
+    <string name="type_source_here">Type source here..</string>
+    <string name="find_source_from_sport">Find source from X1</string>
 </resources>

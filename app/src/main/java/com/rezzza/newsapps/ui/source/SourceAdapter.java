@@ -37,6 +37,7 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.AdapterVie
         Source source = listData.get(position);
 
         holder.txvw_title.setText(source.getName());
+        holder.txvw_description.setText(source.getDescription());
 
         holder.mrly_action.setOnClickListener(view -> {
             if (listener != null){
@@ -51,14 +52,13 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.AdapterVie
     }
 
     static class AdapterView extends RecyclerView.ViewHolder{
-        ImageView imvw_icon;
-        TextView txvw_title;
+        TextView txvw_title,txvw_description;
         MaterialRippleLayout mrly_action;
 
         public AdapterView(@NonNull View itemView) {
             super(itemView);
 
-            imvw_icon = itemView.findViewById(R.id.imvw_icon);
+            txvw_description = itemView.findViewById(R.id.txvw_description);
             txvw_title = itemView.findViewById(R.id.txvw_title);
             mrly_action = itemView.findViewById(R.id.mrly_action);
         }

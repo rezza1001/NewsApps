@@ -34,6 +34,7 @@ public class CategoryActivity extends MyActivity {
 
         RecyclerView rcvw_category = findViewById(R.id.rcvw_category);
         rcvw_category.setLayoutManager(new GridLayoutManager(mActivity, 3));
+        rcvw_category.setNestedScrollingEnabled(false);
         mAdapter = new CategoryAdapter(listCategory);
         rcvw_category.setAdapter(mAdapter);
 
@@ -42,7 +43,7 @@ public class CategoryActivity extends MyActivity {
 
     @Override
     protected void initListener() {
-        scvw_search.setOnSearchListener(() -> {
+        scvw_search.setOnActionListener(() -> {
 
         });
 

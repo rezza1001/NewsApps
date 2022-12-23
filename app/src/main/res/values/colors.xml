@@ -15,4 +15,5 @@
     <color name="text2">#102027</color>
     <color name="text3">#7F919A</color>
     <color name="backgroundActivity">#F5FBFF</color>
+    <color name="shimmer">#b0bec5</color>
 </resources>
