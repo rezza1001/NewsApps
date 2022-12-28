@@ -1,6 +1,11 @@
-# NewsApps
+# ArticleApps
+
 1. Source screen : Tidak bisa endless scrolling. karena API tidak support. hanyya ada filter by category dan country. reff : https://newsapi.org/docs/endpoints/sources
 2. API hanya bisa maksimal 50 request per hari
+
+File APK 
+
+<a href="https://firebasestorage.googleapis.com/v0/b/vmafile.appspot.com/o/Article.apk?alt=media&token=35693b6a-9042-41b1-9b4d-1414ad308091"> Download FILE APK <a/>
 
 Screenshot :
 
